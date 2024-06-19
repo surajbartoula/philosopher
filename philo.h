@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 14:23:47 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/19 09:41:33 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/19 11:16:56 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,14 @@ typedef struct	table_fork
 
 typedef struct s_philo
 {
-	pthread_t	thread;
-	int			id;
-	int			eating;
-	int			finished_eating;
-	int			*dead;
-	size_t		last_meal;
-	t_fork		forks;
+	pthread_t		thread;
+	int				id;
+	int				eating;
+	int				finished_eating;
+	int				*dead;
+	size_t			last_meal;
+	t_fork			forks;
+	pthread_mutex_t	*mut_dead;
 }		t_philo;
 
 typedef struct table 
