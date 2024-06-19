@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 14:55:35 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/17 18:17:47 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/19 08:05:53 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	parse_input(int argc, char *argv[])
 {
 	if (argc > 6 || argc < 5)
 	{
-	printf("Usage: ./philo no_of_phio time_to_die");
+		printf("Usage: ./philo no_of_phio time_to_die");
 	 	return (printf(" time_to_eat time_to_sleep must_eat_times(optional)\n"));
 	}
 	if (!is_number(argv[1]) || ft_atoi(argv[1]) > INT_MAX || ft_atoi(argv[1]) <= 0)

@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 14:23:47 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/17 17:32:37 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/19 09:41:33 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,30 +20,41 @@
 #include <limits.h>
 #include <pthread.h>
 
+typedef struct	table_fork
+{
+	pthread_mutex_t	*r_fork;
+	pthread_mutex_t	*l_fork;
+}	t_fork;
+
 typedef struct s_philo
 {
 	pthread_t	thread;
-	int		id;
-	int		eating;
-	int		finished_eating;
+	int			id;
+	int			eating;
+	int			finished_eating;
+	int			*dead;
 	size_t		last_meal;
+	t_fork		forks;
+}		t_philo;
+
+typedef struct table 
+{
+	t_philo		*philos;
 	size_t		time_to_die;
 	size_t		time_to_eat;
 	size_t		time_to_sleep;
 	size_t		start_time;
-	int		no_of_philos;
-	int		n_t_eachmusteat;
-	pthread_mutex_t	*r_fork;
-	pthread_mutex_t	*l_fork;
-}		t_philo;
+	int			no_of_philos;
+	int			n_t_eachmusteat;
+}	t_table;
 
-typedef struct s_program
-{
-	t_philo		*philos;
-}	t_program;
-
-int	parse_input(int argc, char *argv[]);
-int	is_number(char *str);
-int	ft_atoi(char *str);
+int		parse_input(int argc, char *argv[]);
+int		is_number(char *str);
+int		ft_atoi(char *str);
+size_t	get_current_time();
+int		ft_usleep(size_t time_milisec);
+void	init_table(t_table *table, char *argv[]);
+void	init_forks(pthread_mutex_t *forks, int no_of_philo);
+void	init_philos(t_philo *philos, t_table *table, pthread_mutex_t *forks, char *argv[]);
 
 #endif
