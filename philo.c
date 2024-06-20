@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 14:21:10 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/20 09:02:40 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/20 10:06:28 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	main(int argc, char *argv[])
 	t_table			table;
 	t_philo			philos;
 	pthread_mutex_t	*forks;
-	t_fork			table_fork;
 
 	if (parse_input(argc, argv) > 0)
 		return (0);
@@ -28,7 +27,7 @@ int	main(int argc, char *argv[])
 	init_table(&table, argv);
 	init_philos(&philos, &table, forks);
 	thread_create(&philos, &table);
-	mut_destroy(NULL, &table, forks);
+	mut_destroy(&philos, forks);
 	free(forks);
 	return (0);
 }

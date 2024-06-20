@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 18:27:13 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/20 08:34:05 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/20 09:57:33 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	eat(t_philo *philo, t_table *table)
 	pthread_mutex_unlock(philo->forks.r_fork);
 }
 
-void	sleep(t_philo *philo, t_table *table)
+void	slep(t_philo *philo, t_table *table)
 {
 	print("is sleeping", philo, philo->id, table->start_time);
 	ft_usleep(table->time_to_sleep);

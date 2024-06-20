@@ -6,13 +6,13 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 08:49:56 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/20 08:58:36 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/20 09:43:05 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	mut_destroy(char *str, t_philo *philos, pthread_mutex_t *forks)
+void	mut_destroy(t_philo *philos, pthread_mutex_t *forks)
 {
 	int	i;
 
