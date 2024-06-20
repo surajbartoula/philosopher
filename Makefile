@@ -6,7 +6,7 @@
 #    By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/17 18:01:35 by sbartoul          #+#    #+#              #
-#    Updated: 2024/06/17 18:07:02 by sbartoul         ###   ########.fr        #
+#    Updated: 2024/06/20 09:19:04 by sbartoul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,15 @@ X = "\033[0m"
 UP = "\033[A"
 CUT = "\033[K"
 
-CFILES = philo.c	\
-	 parse.c	\
-	 utils.c	\
+CFILES = philo.c		\
+	 	parse.c			\
+	 	utils.c			\
+		threads.c		\
+		print.c			\
+		mut_destroy.c	\
+		init.c			\
+		eat_slep_thnk.c	\
+		alive_ate.c		\
 
 OBJECTS = ${CFILES:.c=.o}
 
