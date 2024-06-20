@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 09:48:31 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/19 11:18:29 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/20 07:42:31 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,17 @@ int	dead(t_philo *philo)
 		return (pthread_mutex_unlock(philo->mut_dead), 1);
 	pthread_mutex_unlock(philo->mut_dead);
 	return (0);
+}
+
+void	*monitor(void *ptr)
+{
+	t_philo	*philos;
+
+	philos = (t_philo *)ptr;
+	while (1)
+		if (!all_alive(philos) || !all_ate(philos))
+			break ;
+	return (ptr);
 }
 
 void	*philo_routine(void *ptr)
@@ -37,7 +48,7 @@ void	*philo_routine(void *ptr)
 	return (ptr);
 }
 
-int	thread_create(t_table *table)
+int	thread_create(t_philo *philos, t_table *table)
 {
 	pthread_t	observer;
 	int			i;
@@ -47,7 +58,7 @@ int	thread_create(t_table *table)
 	i = 0;
 	while (i < table->no_of_philos)
 	{
-		if (pthread_create(&table->philos[i].thread, NULL, &philo_routine, &table->philos[i]) != 0)
+		if (pthread_create(&philos[i].thread, NULL, &philo_routine, &philos[i]) != 0)
 			destroy_all("Thread creation error", table);
 		i++;
 	}
@@ -55,7 +66,7 @@ int	thread_create(t_table *table)
 		destroy_all("Thread join error", table);
 	while (i < table->no_of_philos)
 	{
-		if (pthread_join(table->philos[i].thread, NULL) != 0)
+		if (pthread_join(philos[i].thread, NULL) != 0)
 			destroy_all("Thread join error", table);
 		i++;
 	}

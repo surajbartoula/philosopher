@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 14:21:10 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/19 09:49:56 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/20 09:02:40 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	main(int argc, char *argv[])
 		return (0);
 	init_forks(forks, ft_atoi(argv[1]));
 	init_table(&table, argv);
-	init_philos(&philos, &table, forks, argv);
-	thread_create(&table);
-	destroy_all(NULL, &table, forks);
+	init_philos(&philos, &table, forks);
+	thread_create(&philos, &table);
+	mut_destroy(NULL, &table, forks);
 	free(forks);
 	return (0);
 }

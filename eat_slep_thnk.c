@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 18:27:13 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/19 19:33:43 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/20 08:34:05 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,5 @@ void	sleep(t_philo *philo, t_table *table)
 
 void	think(t_philo *philo, t_table *table)
 {
-	print("is thinking", philo, philo->id, table.start_time);
+	print("is thinking", philo, philo->id, table->start_time);
 }
