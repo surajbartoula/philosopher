@@ -18,8 +18,8 @@ int	dead(t_philo *philo)
 	if (*philo->dead == 1)
 		return (pthread_mutex_unlock(philo->mut_dead), 1);
 	pthread_mutex_unlock(philo->mut_dead);
-	return 90
-;}
+	return (0);
+}
 
 void	*philo_routine(void *ptr)
 {
