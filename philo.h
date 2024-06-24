@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 14:23:47 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/20 09:57:39 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/20 23:45:05 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int		ft_usleep(size_t time_milisec);
 void	init_table(t_table *table, char *argv[]);
 void	init_forks(pthread_mutex_t *forks, int no_of_philo);
 void	init_philos(t_philo *philos, t_table *table, pthread_mutex_t *forks);
-void	mut_destroy(t_philo *philos, pthread_mutex_t *forks);
+void	mut_destroy(t_philo *philos, t_fork *forks);
 int		thread_create(t_philo *philos, t_table *table);
 void	print(char *str, t_philo *philo, int id, size_t start_time);
 void	eat(t_philo *philo, t_table *table);
