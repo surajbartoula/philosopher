@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 07:02:51 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/24 19:04:49 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/24 22:31:34 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ void	init_table(t_table *table, char *argv[])
 	else
 		table->n_t_eachmusteat = -1;
 	table->start_time = get_current_time();
+	table->dead_flag = 0;
+	pthread_mutex_init(&table->mut_dead, NULL);
+	pthread_mutex_init(&table->mut_last_meal, NULL);
+	pthread_mutex_init(&table->mut_print, NULL);
 }
 
 void	init_philos(t_philo **philos, t_table *table, pthread_mutex_t *forks)
@@ -46,7 +50,7 @@ void	init_philos(t_philo **philos, t_table *table, pthread_mutex_t *forks)
 	{
 		philos[i]->id = i + 1;
 		philos[i]->eating = 0;
-		philos[i]->finished_eating = 0;
+		philos[i]->meals_eaten = 0;
 		philos[i]->last_meal = get_current_time();
 		philos[i]->l_fork = &forks[i];
 		if (i == 0)
@@ -54,10 +58,9 @@ void	init_philos(t_philo **philos, t_table *table, pthread_mutex_t *forks)
 		else
 			philos[i]->r_fork = &forks[i - 1];
 		philos[i]->table = table;
-		philos[i]->mut_meal = (*philos)->mut_meal;
-		philos[i]->mut_print = (*philos)->mut_print;
-		philos[i]->mut_dead = (*philos)->mut_dead;
-		philos[i]->mut_last_meal = (*philos)->mut_last_meal;
+		philos[i]->mut_print = &table->mut_print;
+		philos[i]->mut_dead = &table->mut_dead;
+		philos[i]->mut_last_meal = &table->mut_last_meal;
 		i++;
 	}
 }

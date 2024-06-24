@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 18:27:13 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/24 18:41:07 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/24 22:32:03 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	eat(t_philo *philo, t_table *table)
 	print("has taken a fork", philo, philo->id, table->start_time);
 	philo->eating = 1;
 	print("is eating", philo, philo->id, table->start_time);
-	pthread_mutex_lock(philo->mut_meal);
+	pthread_mutex_lock(philo->mut_last_meal);
 	philo->last_meal = get_current_time();
 	philo->meals_eaten++;
-	pthread_mutex_unlock(philo->mut_meal);
+	pthread_mutex_unlock(philo->mut_last_meal);
 	ft_usleep(table->time_to_eat);
 	philo->eating = 0;
 	pthread_mutex_unlock(philo->l_fork);

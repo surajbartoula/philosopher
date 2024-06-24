@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 14:21:10 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/24 18:35:11 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/24 22:30:25 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char *argv[])
 		return (0);
 	init_philos(&philos, &table, forks);
 	thread_create(&philos, &table, forks);
-	mut_destroy(&philos, forks);
+	mut_destroy(&table, forks);
 	free(forks);
 	free(philos);
 	return (0);
