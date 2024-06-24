@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 07:44:45 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/20 08:33:07 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/24 12:51:35 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	all_alive(t_philo *philos)
 	{
 		if (philo_died(&philos[i]))
 		{
-			print("died", &philos[i], philos[i].id);
+			print("died", &philos[i], philos[i].id, philos[i].table->start_time);
 			pthread_mutex_lock(philos[0].mut_dead);
 			*philos->dead = 1;
 			pthread_mutex_unlock(philos[0].mut_dead);
@@ -47,10 +47,8 @@ int	all_alive(t_philo *philos)
 int	all_ate(t_philo *philos)
 {
 	int	i;
-	int	finished_eating;
 
 	i = 0;
-	finished_eating = 0;
 	if (philos[0].table->n_t_eachmusteat == -1)
 		return (0);
 	while (i < philos->table->no_of_philos)

@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 09:48:31 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/24 07:52:04 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/24 12:26:16 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	thread_create(t_philo **philos, t_table *table)
 	i = 0;
 	while (i < table->no_of_philos)
 	{
-		if (pthread_join(&((*philos)[i].thread), NULL) != 0)
+		if (pthread_join((*philos)[i].thread, NULL) != 0)
 			mut_destroy(philos, &((*philos)->forks));
 		i++;
 	}
