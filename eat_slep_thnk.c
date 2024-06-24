@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 18:27:13 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/20 22:44:38 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/24 18:41:07 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	eat(t_philo *philo, t_table *table)
 {
-	pthread_mutex_lock(philo->forks.r_fork);
+	pthread_mutex_lock(philo->r_fork);
 	print("has taken a fork", philo, philo->id, table->start_time);
 	if (table->no_of_philos == 1)
 	{
 		ft_usleep(table->time_to_die);
-		pthread_mutex_unlock(philo->forks.r_fork);
+		pthread_mutex_unlock(philo->r_fork);
 		return ;
 	}
-	pthread_mutex_lock(philo->forks.l_fork);
+	pthread_mutex_lock(philo->l_fork);
 	print("has taken a fork", philo, philo->id, table->start_time);
 	philo->eating = 1;
 	print("is eating", philo, philo->id, table->start_time);
@@ -32,8 +32,8 @@ void	eat(t_philo *philo, t_table *table)
 	pthread_mutex_unlock(philo->mut_meal);
 	ft_usleep(table->time_to_eat);
 	philo->eating = 0;
-	pthread_mutex_unlock(philo->forks.l_fork);
-	pthread_mutex_unlock(philo->forks.r_fork);
+	pthread_mutex_unlock(philo->l_fork);
+	pthread_mutex_unlock(philo->r_fork);
 }
 
 void	slep(t_philo *philo, t_table *table)

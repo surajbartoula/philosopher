@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 07:02:51 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/24 10:51:10 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/24 19:04:49 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,28 +37,27 @@ void	init_table(t_table *table, char *argv[])
 	table->start_time = get_current_time();
 }
 
-void	init_philos(t_philo *philos, t_table *table, pthread_mutex_t *forks)
+void	init_philos(t_philo **philos, t_table *table, pthread_mutex_t *forks)
 {
 	int	i;
 
 	i = 0;
 	while (i < table->no_of_philos)
 	{
-		philos[i].id = i + 1;
-		philos[i].eating = 0;
-		philos[i].finished_eating = 0;
-		philos[i].meals_eaten = 0;
-		philos[i].dead = 0;
-		philos[i].last_meal = table->start_time;
-		philos[i].mut_meal = &philos->mut_meal;
-		philos[i].mut_dead = &philos->mut_dead;
-		philos[i].mut_print = &philos->mut_print;
-		philos[i].forks.l_fork = &forks[i];
+		philos[i]->id = i + 1;
+		philos[i]->eating = 0;
+		philos[i]->finished_eating = 0;
+		philos[i]->last_meal = get_current_time();
+		philos[i]->l_fork = &forks[i];
 		if (i == 0)
-			philos[i].forks.r_fork = &forks[table->no_of_philos - 1];
+			philos[i]->r_fork = &forks[table->no_of_philos - 1];
 		else
-			philos[i].forks.r_fork = &forks[i - 1];
-		philos[i].table = table;
+			philos[i]->r_fork = &forks[i - 1];
+		philos[i]->table = table;
+		philos[i]->mut_meal = (*philos)->mut_meal;
+		philos[i]->mut_print = (*philos)->mut_print;
+		philos[i]->mut_dead = (*philos)->mut_dead;
+		philos[i]->mut_last_meal = (*philos)->mut_last_meal;
 		i++;
 	}
 }

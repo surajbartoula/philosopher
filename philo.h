@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 14:23:47 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/24 10:48:00 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/24 18:34:20 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,6 @@
 #include <sys/time.h>
 #include <limits.h>
 #include <pthread.h>
-
-typedef struct	table_fork
-{
-	pthread_mutex_t	*r_fork;
-	pthread_mutex_t	*l_fork;
-}	t_fork;
 
 typedef struct table
 {
@@ -46,10 +40,11 @@ typedef struct s_philo
 	int				*dead;
 	size_t			last_meal;
 	pthread_mutex_t	*mut_meal;
-	t_fork			forks;
 	pthread_mutex_t	*mut_dead;
 	pthread_mutex_t	*mut_print;
 	pthread_mutex_t	*mut_last_meal;
+	pthread_mutex_t	*r_fork;
+	pthread_mutex_t	*l_fork;
 	t_table			*table;
 }		t_philo;
 
@@ -63,9 +58,9 @@ int		dead(t_philo *philo);
 int		ft_usleep(size_t time_milisec);
 void	init_table(t_table *table, char *argv[]);
 void	init_forks(pthread_mutex_t *forks, int no_of_philo);
-void	init_philos(t_philo *philos, t_table *table, pthread_mutex_t *forks);
-void	mut_destroy(t_philo **philos, t_fork *forks);
-int		thread_create(t_philo **philos, t_table *table);
+void	init_philos(t_philo **philos, t_table *table, pthread_mutex_t *forks);
+void	mut_destroy(t_philo **philos, pthread_mutex_t *forks);
+int		thread_create(t_philo **philos, t_table *table, pthread_mutex_t *forks);
 void	print(char *str, t_philo *philo, int id, size_t start_time);
 void	eat(t_philo *philo, t_table *table);
 void	slep(t_philo *philo, t_table *table);

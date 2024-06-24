@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 14:21:10 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/24 10:47:47 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/24 18:35:11 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ int	main(int argc, char *argv[])
 	philos = malloc(sizeof(t_philo) * no_of_philos);
 	if (!philos)
 		return (0);
-	init_philos(philos, &table, forks);
-	thread_create(&philos, &table);
-	mut_destroy(&philos, &philos->forks);
+	init_philos(&philos, &table, forks);
+	thread_create(&philos, &table, forks);
+	mut_destroy(&philos, forks);
 	free(forks);
 	free(philos);
 	return (0);
