@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 07:02:51 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/20 09:01:34 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/24 07:08:56 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,23 @@ void	init_table(t_table *table, char *argv[])
 	table->start_time = get_current_time();
 }
 
-void	init_philos(t_philo *philos, t_table *table, pthread_mutex_t *forks)
+void	init_philos(t_philo **philos, t_table *table, pthread_mutex_t *forks)
 {
 	int	i;
 
 	i = 0;
 	while (i < table->no_of_philos)
 	{
-		philos[i].id = i + 1;
-		philos[i].eating = 0;
-		philos[i].finished_eating = 0;
-		philos[i].last_meal = table->start_time;
-		philos[i].forks.l_fork = &forks[i];
+		philos[i]->id = i + 1;
+		philos[i]->eating = 0;
+		philos[i]->finished_eating = 0;
+		philos[i]->last_meal = table->start_time;
+		philos[i]->forks.l_fork = &forks[i];
 		if (i == 0)
-			philos[i].forks.r_fork = &forks[table->no_of_philos - 1];
+			philos[i]->forks.r_fork = &forks[table->no_of_philos - 1];
 		else
-			philos[i].forks.r_fork = &forks[i - 1];
-		philos[i].table = table;
+			philos[i]->forks.r_fork = &forks[i - 1];
+		philos[i]->table = table;
 		i++;
 	}
 }
