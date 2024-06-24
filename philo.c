@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 14:21:10 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/24 12:16:23 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/24 10:47:47 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ int	main(int argc, char *argv[])
 	forks = malloc(sizeof(pthread_mutex_t) * no_of_philos);
 	if (!forks)
 		return (0);
-	init_forks(forks, ft_atoi(argv[1]));
+	init_forks(forks, no_of_philos);
 	init_table(&table, argv);
 	philos = malloc(sizeof(t_philo) * no_of_philos);
 	if (!philos)
 		return (0);
-	init_philos(&philos, &table, forks);
+	init_philos(philos, &table, forks);
 	thread_create(&philos, &table);
 	mut_destroy(&philos, &philos->forks);
 	free(forks);
