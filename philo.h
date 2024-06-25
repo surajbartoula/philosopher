@@ -6,19 +6,19 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 14:23:47 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/25 10:46:56 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/25 15:27:59 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
-#define PHILO_H
+# define PHILO_H
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/time.h>
-#include <limits.h>
-#include <pthread.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <sys/time.h>
+# include <limits.h>
+# include <pthread.h>
 
 typedef struct table
 {
@@ -55,7 +55,7 @@ int		is_number(char *str);
 int		ft_atoi(char *str);
 int		all_ate(t_philo *philos);
 int		all_alive(t_philo *philos);
-size_t	get_current_time();
+size_t	get_current_time(void);
 int		dead(t_philo *philo);
 int		ft_usleep(size_t time_milisec);
 void	init_table(t_table *table, char *argv[]);

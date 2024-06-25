@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 17:24:59 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/25 15:13:03 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/25 15:18:39 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	is_number(char *str)
 
 int	ft_atoi(char *str)
 {
-	int		neg;
+	int				neg;
 	long long int	i;
 
 	i = 0;
