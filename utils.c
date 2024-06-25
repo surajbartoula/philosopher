@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 17:24:59 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/19 08:26:52 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/25 09:47:06 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	ft_atoi(char *str)
 	return (neg * i);
 }
 
-size_t	get_current_time()
+size_t	get_current_time(void)
 {
 	struct timeval	time;
 
