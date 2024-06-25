@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 07:44:45 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/24 22:32:08 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/25 09:32:22 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,26 @@ int	all_alive(t_philo *philos)
 int	all_ate(t_philo *philos)
 {
 	int	i;
+	int	finised_eating;
 
 	i = 0;
+	finised_eating = 0;
 	if (philos[0].table->n_t_eachmusteat == -1)
 		return (0);
-	while (i < philos->table->no_of_philos)
+	while (i < philos[0].table->no_of_philos)
+	{
+		pthread_mutex_lock(philos[i].mut_last_meal);
+		if (philos[i].meals_eaten >= philos->table->n_t_eachmusteat)
+			finised_eating++;
+		pthread_mutex_unlock(philos[i].mut_last_meal);
+		i++;
+	}
+	if (finised_eating == philos->table->no_of_philos)
 	{
 		pthread_mutex_lock(philos[0].mut_dead);
 		*philos->dead = 1;
 		pthread_mutex_unlock(philos[0].mut_dead);
 		return (0);
 	}
-	return (0);
+	return (1);
 }

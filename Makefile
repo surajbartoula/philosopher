@@ -6,12 +6,12 @@
 #    By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/17 18:01:35 by sbartoul          #+#    #+#              #
-#    Updated: 2024/06/20 09:19:04 by sbartoul         ###   ########.fr        #
+#    Updated: 2024/06/25 08:46:39 by sbartoul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
-CC = cc
+CC = gcc -g
 CFLAGS = -Wall -Wextra -Werror
 
 Y = "\033[33m"

@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 07:02:51 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/25 10:46:38 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/25 09:41:44 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void init_philos(t_philo *philos, t_table *table, pthread_mutex_t *forks)
 {
     int i = 0;
 
-	printf("No of Philosopher: %d", table->no_of_philos);
     while (i < table->no_of_philos)
     {
         philos[i].id = i + 1;
@@ -61,6 +60,7 @@ void init_philos(t_philo *philos, t_table *table, pthread_mutex_t *forks)
         philos[i].mut_print = &table->mut_print;
         philos[i].mut_dead = &table->mut_dead;
         philos[i].mut_last_meal = &table->mut_last_meal;
+		philos[i].dead = &table->dead_flag;
         i++;
     }
 }

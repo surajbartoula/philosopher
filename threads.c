@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 09:48:31 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/25 10:49:56 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/25 09:34:43 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ int	dead(t_philo *philo)
 
 void	*monitor(void *ptr)
 {
-	t_philo	**philos;
+	t_philo	*philos;
 
-	philos = (t_philo **)ptr;
+	philos = (t_philo *)ptr;
 	while (1)
-		if (!all_alive(*philos) || !all_ate(*philos))
+		if (!all_alive(philos) || !all_ate(philos))
 			break ;
 	return (ptr);
 }
@@ -65,11 +65,13 @@ int	thread_create(t_philo *philos, t_table *table, pthread_mutex_t *forks)
 			mut_destroy(table, forks);
 		i++;
 	}
+	printf("pthread_cerate done\n");
 	if (pthread_join(observer, NULL) != 0)
 	{
 		mut_destroy(table, forks);
 		return (-1);
 	}
+	printf("Working on pthread_join\n");
 	i = 0;
 	while (i < table->no_of_philos)
 	{
