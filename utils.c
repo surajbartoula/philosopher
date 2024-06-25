@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 17:24:59 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/25 09:47:06 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/25 15:13:03 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,6 @@ int	ft_atoi(char *str)
 	return (neg * i);
 }
 
-size_t	get_current_time(void)
-{
-	struct timeval	time;
-
-	gettimeofday(&time, NULL);
-	return (time.tv_sec * 1000 + time.tv_usec / 1000);
-}
-
 int	ft_usleep(size_t time_milisec)
 {
 	size_t	start;
@@ -67,4 +59,12 @@ int	ft_usleep(size_t time_milisec)
 	while ((get_current_time() - start) < time_milisec)
 		usleep(500);
 	return (0);
+}
+
+size_t	get_current_time(void)
+{
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }
