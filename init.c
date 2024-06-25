@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 07:02:51 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/24 22:31:34 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/25 10:46:38 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,26 +41,26 @@ void	init_table(t_table *table, char *argv[])
 	pthread_mutex_init(&table->mut_print, NULL);
 }
 
-void	init_philos(t_philo **philos, t_table *table, pthread_mutex_t *forks)
+void init_philos(t_philo *philos, t_table *table, pthread_mutex_t *forks)
 {
-	int	i;
+    int i = 0;
 
-	i = 0;
-	while (i < table->no_of_philos)
-	{
-		philos[i]->id = i + 1;
-		philos[i]->eating = 0;
-		philos[i]->meals_eaten = 0;
-		philos[i]->last_meal = get_current_time();
-		philos[i]->l_fork = &forks[i];
-		if (i == 0)
-			philos[i]->r_fork = &forks[table->no_of_philos - 1];
-		else
-			philos[i]->r_fork = &forks[i - 1];
-		philos[i]->table = table;
-		philos[i]->mut_print = &table->mut_print;
-		philos[i]->mut_dead = &table->mut_dead;
-		philos[i]->mut_last_meal = &table->mut_last_meal;
-		i++;
-	}
+	printf("No of Philosopher: %d", table->no_of_philos);
+    while (i < table->no_of_philos)
+    {
+        philos[i].id = i + 1;
+        philos[i].eating = 0;
+        philos[i].meals_eaten = 0;
+        philos[i].last_meal = get_current_time();
+        philos[i].l_fork = &forks[i];
+        if (i == 0)
+            philos[i].r_fork = &forks[table->no_of_philos - 1];
+        else
+            philos[i].r_fork = &forks[i - 1];
+        philos[i].table = table;
+        philos[i].mut_print = &table->mut_print;
+        philos[i].mut_dead = &table->mut_dead;
+        philos[i].mut_last_meal = &table->mut_last_meal;
+        i++;
+    }
 }
