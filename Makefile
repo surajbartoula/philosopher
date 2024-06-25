@@ -6,12 +6,12 @@
 #    By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/17 18:01:35 by sbartoul          #+#    #+#              #
-#    Updated: 2024/06/25 08:46:39 by sbartoul         ###   ########.fr        #
+#    Updated: 2024/06/25 17:20:56 by sbartoul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
-CC = gcc -g
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 Y = "\033[33m"
@@ -54,6 +54,8 @@ clean:
 fclean: clean
 	@rm -f $(NAME)
 	@echo $(R)Removed [$(NAME)]$(X)
+
+all: $(NAME)
 
 re: fclean all
 
