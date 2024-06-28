@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 07:44:45 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/26 12:11:05 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/28 14:01:47 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	all_ate(t_philo *philos)
 	i = 0;
 	finised_eating = 0;
 	if (philos[0].table->n_t_eachmusteat == -1)
-		return (1);
+		return (0);
 	while (i < philos[0].table->no_of_philos)
 	{
 		pthread_mutex_lock(philos[i].mut_last_meal);
@@ -68,7 +68,7 @@ int	all_ate(t_philo *philos)
 		pthread_mutex_lock(philos[0].mut_dead);
 		*philos->dead = 1;
 		pthread_mutex_unlock(philos[0].mut_dead);
-		return (0);
+		return (1);
 	}
-	return (1);
+	return (0);
 }

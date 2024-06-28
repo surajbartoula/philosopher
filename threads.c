@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 09:48:31 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/25 15:30:20 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/06/28 14:01:08 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	*monitor(void *ptr)
 
 	philos = (t_philo *)ptr;
 	while (1)
-		if (!all_alive(philos) || !all_ate(philos))
+		if (!all_alive(philos) || all_ate(philos))
 			break ;
 	return (ptr);
 }
