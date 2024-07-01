@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 17:24:59 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/25 15:18:39 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/07/01 12:04:36 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ size_t	get_current_time(void)
 {
 	struct timeval	time;
 
-	gettimeofday(&time, NULL);
+	if (gettimeofday(&time, NULL) == -1)
+		printf("Error getting time\n");
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }
