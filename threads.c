@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 09:48:31 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/06/28 14:01:08 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/07/02 15:36:07 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	*philo_routine(void *ptr)
 	t_philo	*philos;
 
 	philos = (t_philo *)ptr;
+	if (philos->table->no_of_philos == 1)
+		return (one_philo(philos), NULL);
 	if (philos->id % 2 == 0)
 		ft_usleep(1);
 	while (!dead(philos))

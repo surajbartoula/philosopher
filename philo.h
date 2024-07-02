@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 14:23:47 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/07/01 12:22:25 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/07/02 23:30:37 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ size_t	get_current_time(void);
 int		dead(t_philo *philo);
 int		ft_usleep(size_t time_milisec);
 void	init_table(t_table *table, char *argv[]);
+void	one_philo(t_philo *philo);
 void	init_forks(pthread_mutex_t *forks, int no_of_philo);
 void	init_philos(t_philo *philos, t_table *table, pthread_mutex_t *forks);
 void	t_error(const char *message, t_philo *philos,
